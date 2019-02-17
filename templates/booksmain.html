@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>Books Home</title>
+	<style>
+		*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.container{
+	min-height: 600px;
+	width: 970px;
+
+}
+
+.header{
+	display: inline-block;
+	min-height: 80px;
+	width: 970px;
+	
+}
+
+.welcome{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 20px;
+	margin-left: 25px;
+}
+
+.abar{
+	display: inline-block;
+	margin-left: 450px;
+	vertical-align: top;
+	font-size: 15px;
+}
+
+.logout{
+	display: inline-block;
+	font-size: 15px;
+	vertical-align: top;
+	margin-left: 10px;
+}
+
+.left{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 25px;
+	padding: 10px;
+}
+
+.right{
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 100px;
+}
+
+#rbrhdr{
+	padding: 5px;
+}
+
+#rating{
+	padding: 5px;
+	display: inline-block;
+}
+
+#revname{
+	padding: 5px;
+}
+
+#createdat{
+	padding: 5px;
+}
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1 class="welcome">Welcome, {{user['name']}}!</h1>
+			<a href="/books/add" class="abar">Add Book and Review</a>
+			<a href="/logout" class="logout">Logout</a>
+		</div>
+		<div class="left">
+			<h1>Recent Book Reviews</h1>
+				
+					{% for review in reviews %}
+					<h4 id="rbrhdr"><a href="/books/{bookid}">{{review['title']}}</a></h4>
+					<P id="rating">Rating:</P> {{review['rating']}}
+						<p id="revname"><a href="/users/{{user['id']}}">{{review['name']}}</a> says: {{review['content']}}</p> 
+					<p id="createdat">Posted on: {{review['created_at']}}</p>
+					{% endfor %}
+				
+		</div>
+		<div class="right">
+			<h1>Other Books with Reviews</h1>
+
+				<select size="{{title | length}}">
+				{% for title in titles %}
+				  <option value="{{title['title']}}"><a href="/books/{{title['id']}}">{{title['title']}}</a></option>
+				{% endfor %}
+				</select>
+
+		</div>
+	</div>
+</body>
+</html> 

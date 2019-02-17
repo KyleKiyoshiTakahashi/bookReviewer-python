@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Book and Review</title>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h3>{title}</h3>
+			<p>Author{author name}</p>
+			<a href="/books">Home</a>
+			<a href="/logout">Logout</a>
+		</div>
+		<div class="left">
+			<h3>Reviews:</h3>
+			{% for loop %}
+			<div>
+				<hr>
+				<p>Rating: {rating count}</p>
+					<p><a href="/users/{userid}">{user who wrote the review}</a> says: {userreview}</p> 
+				<p>Posted on: {created_at}</p>
+				{% if logged in user %}
+					<a href="/delete/?">Delete this review</a>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>

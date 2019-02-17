@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>User Review</title>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<a href="/books">Home</a>
+			<a href="/books/add">Add a Book Review</a>
+			<a href="/logout">Logout</a>
+		</div>
+		<div class="body1">
+			<h2>User Alias: {user alias}</h2>
+			<p>Name: {user name}</p>
+			<p>Email: {user email}</p>
+			<p>Total Reviews: {number of reviews-count}</p>
+		</div>
+		<div class="body2">
+			<h2>Posted Reviews on the following books:</h2>
+			{% for loop postin gall books user reviewed %}
+			<div>
+				<p><a href="/books/{bookid}">{book title}</a></p>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
+
